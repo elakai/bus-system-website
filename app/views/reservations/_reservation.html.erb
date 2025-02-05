@@ -1,0 +1,93 @@
+<div id="<%= dom_id reservation %>">
+<div class="reservation_container">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Cinzel:wght@400..900&family=Graduate&family=Jacquard+12&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+
+  <style>
+
+
+  .table2 {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+
+    .body {
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: "Caveat Brush", cursive;
+      font-size: 30px;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .top {
+      background: linear-gradient(to right, #5B1349, #FF6AD9, #131D5B);
+      padding-top: 100px;
+      font-family: "Caveat Brush", cursive;
+      text-align: center;
+    }
+
+
+    .table2 tbody tr:nth-of-type(odd){
+      background-color: white;
+      color: black;
+    }
+
+  h1 {
+    font-family: "Bebas Neue", serif;
+    font-size: 70px;
+    text-align: center;
+    background: linear-gradient(to right, #FFE124, #FCCEA2,#D96D07);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+
+  .table2 tbody tr{
+    font-family: "Bebas Neue", serif;
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
+
+  .name {
+    color: white;
+  }
+
+
+
+  </style>
+</head>
+
+<h1>Reservation Information</h1>
+  <h4 style="color: white; font-size: 40px; text-align:center;">Name: <%=reservation.passenger.name%></h4>   
+<table class="table2">
+  <thead class="body">
+  <tr class="top">
+  <td>Itinerary</td>
+  <td>Schedule</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr class="body">
+      
+     <% @reservation.passenger.trips.each do |trip|%>
+      <tr><td><%= trip.origin %> to
+      <%= trip.destination %></td>
+      <td><%=trip.schedule%></td>
+      
+      <%end%>
+      </tr>
+   
+
+    </tbody>
+
+  </table>
+
+
+</div>

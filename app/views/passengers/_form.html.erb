@@ -1,0 +1,82 @@
+<%= form_with(model: passenger) do |form| %>
+  <!-- Header Image -->
+  <div style="text-align: center; margin-bottom: 10px;">
+    <%= image_tag 'NEW PASSENGER.png', alt: 'NEW PASSENGER PASSENGER', class: 'header-image' %>
+  </div>
+
+  <% if passenger.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(passenger.errors.count, "error") %> prohibited this passenger from being saved:</h2>
+      <ul>
+        <% passenger.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :contact_number, style: "display: block" %>
+    <%= form.text_field :contact_number %>
+  </div>
+
+  <div>
+    <%= form.label :email_address, style: "display: block" %>
+    <%= form.text_field :email_address %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
+  </div>
+
+  <!-- Include the submit button only once -->
+  <div class="button-container">
+    <%= link_to 'Cancel', passengers_path, class: 'button' %>
+    <%= link_to 'Back to Passengers', passengers_path, class: 'button small' %>
+    <%= form.submit 'Save', class: 'button' %>
+  </div>
+<% end %>
+
+<style>
+  .header-image {
+    border: 5px solid black;
+  }
+
+  form {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align buttons vertically */
+    margin-top: 20px;
+  }
+
+  .button {
+    margin:0 10px;
+    background-color: #1e1e3f;
+    border: none;
+    color: white;
+    padding: 10px 20px; /* Adjust button padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; /* Adjust button font size */
+    transition-duration: 0.1s;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: "Bebas Neue", sans-serif;
+  }
+
+  .button:hover {
+    background-color: black;
+  }
+</style>

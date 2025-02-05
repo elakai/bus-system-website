@@ -1,0 +1,181 @@
+<p style="color: green"><%= notice %></p>
+<%= render @bus %>
+<div class="busshow-container">
+
+
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Graduate&family=Jacquard+12&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Castoro+Titling&family=Cinzel:wght@400..900&family=Graduate&family=Jacquard+12&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+
+  <style>
+
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+
+    table thead td {
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 30px;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    table thead tr {
+      background: linear-gradient(to right, #000000, #FF8700);
+    }
+
+    tbody td {
+      border-bottom: 3px solid #6C3D08;
+      padding: 10px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 40px;
+      text-align: center;
+    }
+
+    h3 {
+      font-family: "Graduate", serif;
+      font-size: 40px;
+      text-align: center;
+      background: linear-gradient(to right, #FFE124, #FCCEA2,#D96D07);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+
+    table tbody tr{
+      background-color: white;
+      color: black;
+    }
+
+    table tbody th{
+      background: #FEE2F4;
+      color: black;
+      text-align: center;
+      width: 10px;
+      padding: 5px;
+      font-family: "Abel", sans-serif;
+      font-size: 25px;
+    }
+
+    .button {
+      background-color: white;
+      font-family: "Bebas Neue", sans-serif;
+      border: none;
+      color: black;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      transition-duration: 0.1s;
+      cursor: pointer;
+      border-radius: 12px;
+      left: 35% ;
+      position: relative;
+    }
+
+    .button2 {
+      background-color: white;
+      font-family: "Bebas Neue", sans-serif;
+      border: none;
+      color: black;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      transition-duration: 0.1s;
+      cursor: pointer;
+      border-radius: 12px;
+      left: 45% ;
+      position: relative;
+    }
+
+    .button3 {
+      background-color: white;
+      font-family: "Bebas Neue", sans-serif;
+      border: none;
+      color: black;
+      padding: 10px 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      transition-duration: 0.1s;
+      cursor: pointer;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .pic {
+      max-width: 50% ;
+      max-height: 75% ;
+    }
+
+    .button:hover, .button2:hover {
+      transform: scale(1.03); 
+      background-color: black;
+      color: white;
+    }
+
+    .button3:hover {
+      transform: scale(1.03); 
+      background-color: red;
+      color: white;
+    }
+  
+  </style>
+</head>
+
+<h3>LIST OF TRIPS</h3>
+
+<table>
+  <thead>
+    <td><strong>Schedule</strong></td>
+    <td><strong>Origin</strong></td>
+    <td><strong>Destination</strong></td>
+  </thead>
+
+  <tbody>
+    <% @bus.trips.each do |trip|%>
+    <tr>
+      <td><%=trip.schedule%></td>
+      <td><%=trip.origin%></td>
+      <td><%=trip.destination%></td> 
+      <% end %>  
+    </tr>
+
+    <% @bus.drivers.each do |driver|%>
+      <tr class="driverinfo">
+      <th><strong>Driver Information</strong></th>
+        <th>Name: <%=driver.name%></th>
+        <th>Contact Number: <%=driver.contact_number%></th> 
+      </tr>
+
+      
+  </tbody>
+
+  <% end %>
+
+  </table>
+
+ 
+
+<div>
+  <%= link_to "Edit this bus", edit_bus_path(@bus), class: "button" %> 
+  <%= link_to "Back to buses", buses_path, class: "button2" %>
+  <%= button_to "Destroy this bus", @bus, class: "button3", method: :delete %>
+</div>
+ </div>

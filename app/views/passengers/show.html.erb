@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Cinzel:wght@400..900&family=Graduate&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #ffd8e6, #ffe6ff, #e6e6ff, #e6f7ff);
+      color: black;
+      font-family: "Bebas Neue", sans-serif;
+    }
+    h1 {
+      font-family: "Graduate", serif;
+      font-size: 50px;
+      text-align: left;
+    }
+    p {
+      font-size: 30px;
+      text-align: left;
+    }
+    .button-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .button {
+      background-color: #1e1e3f;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 24px;
+      transition-duration: 0.1s;
+      cursor: pointer;
+      border-radius: 12px;
+      font-family: "Bebas Neue", sans-serif;
+    }
+    .button:hover {
+      background-color: black;
+    }
+    .container {
+      padding: 20px;
+    }
+    .header-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border: 5px solid black;
+    }
+    .label {
+      font-weight: bold;
+    }
+    .input-text {
+      color: #ff1493;
+    }
+    .trip-image {
+      width: 1300px;
+      height: auto;
+      margin-bottom: 20px;
+      border: 5px solid black;
+    }
+    .trip-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .trip-table th,
+    .trip-table td {
+      padding: 10px;
+      border: 1px solid black;
+    }
+
+    .bus-drivers-row {
+      background-color: #e75480; /* Dark Pink */
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="<%= asset_path('PASSENGER INFORMATION HEADER') %>" alt="Passenger Header" class="header-image">
+
+    <div id="<%= dom_id(@passenger) %>" class="passenger-info">
+      <p><strong><span class="label">Name:</span></strong> <span class="input-text"><%= @passenger.name %></span></p>
+      <p><strong><span class="label">Contact Number:</span></strong> <span class="input-text"><%= @passenger.contact_number %></span></p>
+      <p><strong><span class="label">Email Address:</span></strong> <span class="input-text"><%= @passenger.email_address %></span></p>
+      <% if @passenger.image.attached? %>
+        <p><strong>Image:</strong> <%= image_tag(@passenger.image, alt: "#{@passenger.name}'s image") %></p>
+      <% else %>
+        <p><strong>Image:</strong> No image available</p>
+      <% end %>
+      <img src="<%= asset_path("LIST OF TRIPS HEADER ") %>" alt="LIST OF TRIPS HEADER" class="header-image">
+   
+      <table class="trip-table">
+        <thead>
+          <tr class="bus-drivers-row">
+            <th>Schedule</th>
+            <th>Origin</th>
+            <th>Destination</th>
+            <th>Bus</th>
+            <th>Driver/s</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <% @passenger.reservations.each do |reservation|%>
+            <tr>
+              <td><%= reservation.trip.schedule %></td>
+              <td><%= reservation.trip.origin %></td>
+              <td><%= reservation.trip.destination %></td>
+              <td><%= reservation.trip.bus.plate_number %></td>
+              <td>
+                <% reservation.trip.bus.drivers.each do |driver| %>
+                  <%= driver.name %> | 
+                <% end %>
+              </td> 
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="button-container">
+      <%= link_to 'Back to Passengers', passengers_path, class: 'button' %>
+      <%= link_to 'Edit this Passenger', edit_passenger_path(@passenger), class: 'button' %>
+      <%= button_to 'Delete this Information', @passenger, class: 'button', method: :delete %>
+    </div>
+  </div>
+</body>
+</html>

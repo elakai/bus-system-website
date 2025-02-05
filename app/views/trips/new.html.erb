@@ -1,0 +1,76 @@
+<<div class="trip-container">
+
+<div class="trip_header">
+  <%= image_tag("TRIPS HEADER.png") %>
+</div>
+
+
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Graduate&family=Jacquard+12&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abel&family=Bad+Script&family=Castoro+Titling&family=Cinzel:wght@400..900&family=Graduate&family=Jacquard+12&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+
+  <style>
+
+
+    h1 {
+      font-family: "Graduate", serif;
+      font-size: 50px;
+      text-align: center;
+      background: linear-gradient(to right, #FFE124, #FCCEA2,#D96D07);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+
+
+    .button {
+      background-color: #0F51B1;
+      font-family: "Bebas Neue", serif;
+      border: none;
+      color: white;
+      padding: 10px 9px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 4px 2px;
+      transition-duration: 0.1s;
+      cursor: pointer;
+      border-radius: 12px;
+      left: 43% ;
+      position: relative;
+    }
+
+    .button:hover {
+      transform: scale(1.03); 
+      background-color: #B0D1FF;
+      color: black;
+    }
+
+    .form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    font-family: "Bebas Neue", serif;
+    }
+  
+  </style>
+</head>
+<h1>New trip</h1>
+<div class="form">
+<%= render "form", trip: @trip %>
+</div>
+
+<br>
+
+<div>
+  <%= link_to "Back to trips", trips_path, class: "button" %>
+</div>
+
+</div>

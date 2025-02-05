@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule: 2024-05-21 06:06:41
+  origin: MyString
+  destination: MyString
+  number_of_passengers: 1
+  unit_fare: 1.5
+  total_fare: 1.5
+  bus: one
+
+two:
+  schedule: 2024-05-21 06:06:41
+  origin: MyString
+  destination: MyString
+  number_of_passengers: 1
+  unit_fare: 1.5
+  total_fare: 1.5
+  bus: two

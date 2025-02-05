@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Cinzel:wght@400..900&family=Graduate&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: pink;
+      color: black;
+      font-family: "Bebas Neue", sans-serif;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table thead th {
+      color: black;
+      text-align: center;
+      padding: 20px;
+      font-size: 30px;
+      border-bottom: 1px solid #dddddd;
+    }
+    table thead tr {
+      background: linear-gradient(to right, #000000, #FF8700);
+    }
+    p {
+      font-size: 30px;
+      text-align: left;
+    }
+    h1 {
+      font-family: "Graduate", serif;
+      font-size: 50px;
+      text-align: left;
+    }
+    .header-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border: 5px solid black;
+    }
+    .image {
+      top: 10%;
+      left: 40%;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Image -->
+  <img src="<%= asset_path('EDIT PASSENGER.png') %>" alt="EDIT PASSENGER HEADER" class="header-image">
+
+  <h1>Passenger Information</h1>
+  <div id="<%= dom_id(passenger) %>" class="passenger-info">
+    <p>
+      <strong>Name:</strong>
+      <%= passenger.name %>
+    </p>
+    <p>
+      <strong>Contact Number:</strong>
+      <%= passenger.contact_number %>
+    </p>
+    <p>
+      <strong>Email Address:</strong>
+      <%= passenger.email_address %>
+    </p>
+    <% if passenger.image.attached? %>
+      <p>
+        <strong>Image:</strong>
+        <%= image_tag(passenger.image, alt: "#{passenger.name}'s image") %>
+      </p>
+    <% else %>
+      <p>
+        <strong>Image:</strong> No image available
+      </p>
+    <% end %>
+  </div>
+</body>
+</html>

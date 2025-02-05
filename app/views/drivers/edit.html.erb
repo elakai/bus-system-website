@@ -1,0 +1,65 @@
+<div class="driver-container">
+
+  <div class="driver-header">
+    <%= image_tag("header-removebg-preview(2).png") %>
+  </div>
+
+  <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+
+    .w1 {
+      text-align: left;
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 35px;
+    }
+
+    .new-driver-button {
+      background: linear-gradient(to right, rgb(247, 202, 201),  rgb(222, 194, 203) ,  rgb(197, 185, 205), rgb(171, 177, 207), rgb(146,168,209));;
+      font-size: 18px;
+      color: black;            
+      padding: 12px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 4px;
+      transition-duration: 0.2s;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .new-driver-button:hover {
+      transform: scale(1.03); 
+      background-color: #CEA60A;  /* Optional: Change background color on hover */
+    }
+
+    .pic {
+      max-width: 200px;
+      max-height: 200px;
+    }
+
+    .horizontal_line {
+            width: 100% ;
+            height: 5px;
+            border-top: 5px solid #dddddd;
+            line-height: 80% ;
+            text-align: center;
+    }
+  
+  </style>
+  </head>
+
+<h1 class="w1">Editing driver</h1>
+
+<%= render "form", driver: @driver %>
+
+<br>
+
+<div>
+  <%= link_to "Show this driver", @driver, class: "new-driver-button"%> |
+  <%= link_to "Back to drivers", drivers_path, class: "new-driver-button" %>
+</div>
