@@ -1,0 +1,101 @@
+<div id="<%= dom_id driver %>">
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+
+    .p0 {
+      border-radius: 20px 0 0 0;
+    }
+
+    .p2 {
+      border-radius: 0 20px 0 0;
+      color: black;
+    }
+
+    .p1 {
+      font-family: "Bebas Neue", sans-serif;
+      background: linear-gradient(to right, rgb(247, 202, 201),  rgb(222, 194, 203) ,  rgb(197, 185, 205), rgb(171, 177, 207), rgb(146,168,209));;
+      font-size: 18px;
+    }
+
+    .w1 {
+      text-align: center;
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 35px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table thead th {
+      color: black;
+      text-align: center;
+      padding: 10px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 32px;
+    
+      border-bottom: 5px solid #dddddd;
+    }
+
+    tbody td {
+      border-bottom: 5px solid #dddddd;
+      padding: 10px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    table tbody tr:nth-of-type(even){
+      background-color: #E9EDED;
+    }
+
+    table tbody tr:nth-of-type(odd){
+      background-color: #FFFFFF;
+    }
+
+    .format {
+        color: white;
+        text-align: center;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 30px;
+      }
+
+    .pic {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  
+  </style>
+</head>
+
+<h3 class="w1">Driver Information</h3>
+
+  <% if driver.image.attached? %>
+  <p class="format">
+    <%= image_tag driver.image %>
+  </p>
+  <% end %>
+
+  <p class="format">
+    <strong>Name:</strong>
+    <%= driver.name %>
+  </p>
+
+  <p class="format">
+    <strong>Contact number:</strong>
+    <%= driver.contact_number %>
+  </p>
+
+  <p class="format">
+    <strong>Bus:</strong>
+    <%= driver.bus.plate_number%>
+  </p>
+
+</div>

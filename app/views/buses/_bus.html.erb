@@ -1,0 +1,68 @@
+<div id="<%= dom_id bus %>">
+
+<div class="busshow-container">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Castoro+Titling&family=Cinzel:wght@400..900&family=Graduate&family=Jacquard+12&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sedan+SC&display=swap" rel="stylesheet">
+
+
+  <style>
+
+
+    p {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 30px;
+      text-align: center;
+      color: white;
+      
+      img {
+        
+      }
+    }
+
+    h1 {
+      font-family: "Graduate", serif;
+      font-size: 50px;
+      text-align: center;
+      color: white;
+    }
+
+    .image {
+      top: 10% ;
+      left: 40% ;
+      position: relative;
+    }
+
+
+  </style>
+</head>
+
+<h1>Bus Information</h1>
+  <p>
+    <td><strong>Body number:</strong></td>
+    <td><%= bus.body_number %></td>
+
+  </p>
+  <p>
+  <td><strong>Plate number:</strong></td>
+    <td><%= bus.plate_number %></td>
+    </p>
+
+    
+    <% if bus.image.attached? %>
+    <p>
+     <td><%= image_tag bus.image %></td>
+     </p>
+     
+    <% end %>
+  
+
+  
+    <td><strong>Plate number:</strong></td>
+    <%= bus.plate_number %>
+    </p>
+  
+  
+</div>

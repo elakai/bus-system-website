@@ -1,0 +1,125 @@
+<p style="color: green"><%= notice %></p>
+<div class="driver-container">
+
+  <div class="driver-header">
+    <%= image_tag("header-removebg-preview(2).png") %>
+  </div>
+
+  <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+
+    .p0 {
+      border-radius: 20px 0 0 0;
+    }
+
+    .p2 {
+      border-radius: 0 20px 0 0;
+      color: black;
+    }
+
+    .p1 {
+      font-family: "Bebas Neue", sans-serif;
+      background: linear-gradient(to right, rgb(247, 202, 201),  rgb(222, 194, 203) ,  rgb(197, 185, 205), rgb(171, 177, 207), rgb(146,168,209));;
+      font-size: 18px;
+    }
+
+    .w1 {
+      text-align: center;
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 35px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table thead th {
+      color: black;
+      text-align: center;
+      padding: 10px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 32px;
+    
+      border-bottom: 5px solid #000000;
+    }
+
+    tbody td {
+      border-bottom: 5px solid #000000;
+      padding: 10px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    table tbody tr:nth-of-type(even){
+      background-color: #dddddd;
+    }
+
+    table tbody tr:nth-of-type(odd){
+      background-color: #FFFFFF;
+    }
+
+    .new-driver-button {
+      background: linear-gradient(to right, rgb(247, 202, 201),  rgb(222, 194, 203) ,  rgb(197, 185, 205), rgb(171, 177, 207), rgb(146,168,209));;
+      font-size: 18px;
+      color: black;            
+      padding: 12px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 4px;
+      transition-duration: 0.2s;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .new-driver-button:hover {
+      transform: scale(1.03); 
+      background-color: #CEA60A;  /* Optional: Change background color on hover */
+    }
+
+    .pic {
+      max-width: 200px;
+      max-height: 200px;
+    }
+  
+  </style>
+</head>
+
+<h1 class="w1" >List of Drivers</h1>
+
+<table>
+  <thead class="p1">
+    <tr>
+      <th class="p0">Name</th>
+      <th>Contact Number</th>
+      <th class="p2">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @drivers.each do |driver| %>
+      <tr>
+        <td><%= link_to driver.name, driver %></td>
+        <td><%= driver.contact_number %></td>
+        <td>
+          <% if driver.image.present? %>
+            <%= image_tag driver.image %>
+          <% else %>
+            <!-- Handle case where image is missing -->
+            No Image Available
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to "New driver", new_driver_path, class: "new-driver-button" %>
